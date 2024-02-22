@@ -1,0 +1,25 @@
+/*Non Parametrized procedure*/
+
+create or replace procedure discount 
+as 
+begin 
+update orders set Total_Amount=(Total_Amount-(Total_Amount*10/100)) 
+where product_name='Dairy Milk'; 
+end;
+
+call discount;
+
+/*Parameterized Procedure*/
+
+CREATE OR REPLACE PROCEDURE ApplyDiscount (product_name_in VARCHAR2)
+AS
+BEGIN
+    UPDATE Orders 
+    SET Total_Amount = Total_Amount - (Total_Amount * 0.10) 
+    WHERE Product_Name = product_name_in;
+END ApplyDiscount;
+/
+
+CALL ApplyDiscount('Dairy Milk');
+
+select * from orders where Product_Name='Dairy Milk';

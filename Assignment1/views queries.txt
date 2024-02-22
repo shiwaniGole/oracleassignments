@@ -1,0 +1,56 @@
+/*VIEW*/
+
+CREATE VIEW Customer_Details
+AS
+select FirstName,LastName,Phone,Total_Amount from customers,orders;
+
+select* from customer_Details;
+
+
+/***Joins in Views: You can create views with joins to combine data from multiple tables.*/
+
+
+CREATE VIEW Customer_orders_view AS
+SELECT FirstName,LastName,Product_Name,Total_Amount
+FROM Customers c
+JOIN Orders o ON c.cust_id = o.cust_id;
+
+select* from  Customer_orders_view;
+
+/***Aggregations in Views: Views can include aggregate functions for summarizing data.*/
+
+
+CREATE VIEW orders_summary AS
+SELECT cust_id, COUNT(*) AS customers_num
+FROM customers
+GROUP BY cust_id;
+
+select* from orders_summary ;
+
+/*Sorting in Views: Views can include an ORDER BY clause to sort the result set.*/
+
+
+CREATE VIEW sorted_customers AS
+SELECT cust_id, FirstName,Phone
+FROM customers
+ORDER BY Cust_id,FirstName ASC;
+
+select* from sorted_customers;
+
+**With Check Option: Ensures that updates or inserts through the view meet certain criteria.
+
+
+CREATE VIEW orders_price_more_than_1000 AS
+SELECT Cust_id,Total_Amount
+FROM orders
+WHERE Total_Amount > 1000
+WITH CHECK OPTION;
+
+select* from orders_price_more_than_1000;
+
+
+
+
+
+
+

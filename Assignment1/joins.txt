@@ -1,0 +1,42 @@
+/*8. Joins:
+a. Retrieve orders along with the customer details for each order, using INNER JOIN.*/
+
+SELECT Orders.*, Customers.* 
+FROM Orders 
+JOIN Customers ON Orders.Cust_id = Customers.Cust_id;
+
+/*b. Retrieve customers who have not placed any orders, using LEFT JOIN.*/
+SELECT Customers.* 
+FROM Customers 
+LEFT JOIN Orders ON Customers.Cust_id = Orders.Cust_id 
+WHERE Orders.Cust_id IS NULL;
+
+/*Inner Join:
+An inner join returns only the rows from both tables where there is a match based on the join condition.*/
+
+SELECT Customers.*, Orders.*
+FROM Customers
+INNER JOIN Orders ON Customers.Cust_id = Orders.Cust_id;
+
+/*Left Outer Join:*/
+
+SELECT Customers.*, Orders.*
+FROM Customers
+LEFT OUTER JOIN Orders ON Customers.Cust_id = Orders.Cust_id;
+
+/*Right Outer Join:*/
+
+SELECT Customers.*, Orders.*
+FROM Customers
+RIGHT OUTER JOIN Orders ON Customers.Cust_id = Orders.Cust_id;
+
+/*Cross Join:*/
+
+
+SELECT Customers.*, Orders.*
+FROM Customers
+CROSS JOIN Orders;
+
+
+
+
